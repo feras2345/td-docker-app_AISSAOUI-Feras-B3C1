@@ -1,20 +1,20 @@
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;TD Docker App&lt;/title&gt;
-    &lt;style&gt;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TD Docker App</title>
+    <style>
         body { font-family: Arial; margin: 40px; }
         #status { color: green; font-weight: bold; }
         #items { margin-top: 20px; }
         .item { padding: 10px; border-bottom: 1px solid #ccc; }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;TD Docker Application&lt;/h1&gt;
-    &lt;div id="status"&gt;Chargement...&lt;/div&gt;
-    &lt;div id="items"&gt;&lt;/div&gt;
+    </style>
+</head>
+<body>
+    <h1>TD Docker Application</h1>
+    <div id="status">Chargement...</div>
+    <div id="items"></div>
 
-    &lt;script&gt;
+    <script>
         async function checkStatus() {
             try {
                 const res = await fetch('http://localhost:8000/status');
@@ -31,17 +31,17 @@
                 const res = await fetch('http://localhost:8000/items');
                 const items = await res.json();
                 const container = document.getElementById('items');
-                container.innerHTML = items.map(item =&gt; 
-                    `&lt;div class="item"&gt;ID: ${item.id} - ${item.name} (${item.description})&lt;/div&gt;`
+                container.innerHTML = items.map(item => 
+                    `<div class="item">ID: ${item.id} - ${item.name} (${item.description})</div>`
                 ).join('');
             } catch(e) {
-                document.getElementById('items').innerHTML = '&lt;p&gt;Erreur chargement items&lt;/p&gt;';
+                document.getElementById('items').innerHTML = '<p>Erreur chargement items</p>';
             }
         }
 
         checkStatus();
         loadItems();
         setInterval(checkStatus, 5000);
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+    </script>
+</body>
+</html>
