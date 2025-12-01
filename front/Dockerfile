@@ -10,4 +10,4 @@ COPY --from=builder /app/index.html /usr/share/nginx/html/
 
 EXPOSE 80
 
-USER 1000
+CMD ["nginx", "-g", "daemon off;"]
