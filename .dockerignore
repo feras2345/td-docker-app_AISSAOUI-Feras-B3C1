@@ -1,6 +1,34 @@
-.git
-node_modules
-*.log
-.env
+# .dockerignore optimisé pour td-docker-app TP
+
+# Dépendances
+node_modules/
 __pycache__/
 *.pyc
+*.pyo
+
+# Git
+.git/
+.gitignore
+
+# Environnement
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# Builds temporaires
+build/
+dist/
+
+# IDE/Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Système
+.DS_Store
+Thumbs.db
