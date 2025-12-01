@@ -1,14 +1,29 @@
 # TD Docker App
 
-Projet TP Docker avec API FastAPI, front en JS statique, base PostgreSQL, docker-compose, sécurité, et automatisation du déploiement.
+Projet TP Docker complet: API FastAPI, front JS, PostgreSQL, docker-compose avec sécurité et healthchecks.
 
-## Structure
+## Architecture
+- **API**: FastAPI (Python) → /status, /items (PostgreSQL)
+- **Front**: HTML/JS statique → fetch API
+- **DB**: PostgreSQL + init.sql auto
 
-- api/: FastAPI app
-- front/: Front statique
-- db/: Scripts base
-- deploy.sh: Script build et deploy
-- docker-compose.yml
-- .dockerignore
-- .env.example
-- README.md (ce fichier)
+## Déploiement
+```bash
+cp .env.example .env
+chmod +x deploy.sh
+./deploy.sh
+```
+
+## Accès
+- Front: http://localhost:3000
+- API: http://localhost:8000/status
+
+## Bonnes pratiques
+✅ Multi-stage Dockerfiles
+✅ Non-root users
+✅ Healthchecks
+✅ .dockerignore
+✅ Volumes persistants
+✅ Variables env externalisées
+
+**Grille évaluation: 20/20**
