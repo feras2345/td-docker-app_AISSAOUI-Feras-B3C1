@@ -44,8 +44,9 @@ Front (Nginx) - port 3000 → API (FastAPI) - port 8000 → PostgreSQL - port 54
 
 - `docker-compose.yml` : définition des services `db`, `api`, `front` (+ réseaux, volumes, healthchecks).
 - `db/init.sql` : création de la base, de la table `items` et insertion de données.
-- `api/main.py` : API FastAPI (routes `/status`, `/items`, connexion DB).
+- `api/app.py` : API FastAPI (routes `/status`, `/items`, connexion DB).
 - `api/requirements.txt` : dépendances Python.
+- `api/tests/test_api.py` : quelques tests automatiques sur les routes `/status` et `/items`.
 - `api/Dockerfile` : image API (Python slim, utilisateur non‑root, port 8000).
 - `front/index.html`, `styles.css` : page web statique + logique JS (fetch vers l'API).
 - `front/default.conf` : configuration Nginx.
@@ -152,11 +153,18 @@ docker compose ps
 
 Les services `db`, `api`, `front` doivent être en `healthy` après quelques secondes.
 
-Tests API :
+Tests API manuels :
 
 ```bash
 curl http://localhost:8000/status
 curl http://localhost:8000/items
+```
+
+Tests automatisés (pytest) :
+
+```bash
+cd api
+pytest -v
 ```
 
 Test frontend (navigateur) :
@@ -179,5 +187,5 @@ Test frontend (navigateur) :
 Améliorations possibles :
 - Étendre les routes de l'API (CRUD complet).
 - Rendre le front plus interactif (formulaires pour ajouter/modifier les items).
-- Ajouter de vrais tests automatisés (pytest) et un pipeline CI/CD.
+- Étendre les tests automatisés (cas d'erreur, scénarios DB complets).
 - Pousser les images dans un registre Docker.
