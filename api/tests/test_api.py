@@ -5,7 +5,7 @@ import os
 # Ajoute le répertoire parent pour l'import
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from main import app
+from app import app
 
 client = TestClient(app)
 
